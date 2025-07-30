@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phone Access Demo</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f9f9f9;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .content-box {
+      margin-top: 30px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h2>📱 Enter Your Phone Number</h2>
+  <input type="text" id="phoneInput" placeholder="Enter phone number" />
+  <button onclick="checkAccess()">Submit</button>
+
+  <div id="content1" class="content-box hidden">
+    <h3>Welcome User 1 (9876543210)</h3>
+    <p><a href="https://drive.google.com/file/d/samplePDF1" target="_blank">📄 View your Drive document</a></p>
+  </div>
+
+  <div id="content2" class="content-box hidden">
+    <h3>Welcome User 2 (9998887777)</h3>
+    <p><a href="https://youtu.be/dummyVideo123" target="_blank">▶️ Watch your YouTube video</a></p>
+  </div>
+
+  <div id="content3" class="content-box hidden">
+    <h3>Welcome User 3 (1234567890)</h3>
+    <p><a href="https://notion.so/random-note-page" target="_blank">📝 Open your Notion page</a></p>
+  </div>
+
+  <div id="noAccess" class="content-box hidden">
+    <p style="color: red;">❌ Phone number not recognized.</p>
+  </div>
+
+  <script>
+    function checkAccess() {
+      var phone = document.getElementById('phoneInput').value.trim();
+      document.querySelectorAll('.content-box').forEach(el => el.classList.add('hidden'));
+
+      if (phone === '9876543210') {
+        document.getElementById('content1').classList.remove('hidden');
+      } else if (phone === '9998887777') {
+        document.getElementById('content2').classList.remove('hidden');
+      } else if (phone === '1234567890') {
+        document.getElementById('content3').classList.remove('hidden');
+      } else {
+        document.getElementById('noAccess').classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
